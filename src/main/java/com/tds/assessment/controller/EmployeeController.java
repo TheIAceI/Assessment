@@ -22,7 +22,7 @@ public class EmployeeController {
 	EmployeeService employeeService;
 	
 	@RequestMapping(value = Routes.BA_GET_EMPLOYEE, method = RequestMethod.GET)  
-	public ResponseEntity getEmployeeAvailable() {		
+	public ResponseEntity getEmployeeAvailable() throws Exception {		
 		List<Employee> allEmployee = (employeeService.getAllEmployee());
 		if (allEmployee.size() == 0) {
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);

@@ -1,5 +1,6 @@
 package com.tds.assessment.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class EmployeeController {
 	}	
 	
 	@RequestMapping(value = Routes.BA_GET_EMPLOYEE_ACTIVE, method = RequestMethod.GET)  
-	public ResponseEntity getEmployeeActive() {		
+	public ResponseEntity getEmployeeActive() throws ParseException {		
 		List<Employee> activeEmployee = (employeeService.getActiveEmployee());
 		if(activeEmployee == null) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

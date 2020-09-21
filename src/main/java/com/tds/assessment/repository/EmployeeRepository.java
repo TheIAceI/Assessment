@@ -1,5 +1,6 @@
 package com.tds.assessment.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,8 +22,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	List<Employee> getAllEmployee();
 
 	/*** List ***/
-	@Query(value = "select * from Employee ", nativeQuery = true)
-	List<Employee> getActiveEmployee();
+	@Query(value = "select * from Employee where (Leave_Date is null) or (Leave_Date < ?1) ", nativeQuery = true)
+	List<Employee> getActiveEmployee(Date date);
 	
 }
 

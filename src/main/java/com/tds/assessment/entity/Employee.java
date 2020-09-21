@@ -1,5 +1,7 @@
 package com.tds.assessment.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,32 +14,29 @@ public class Employee {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
+	@Column(name="ID")
 	private int id;
 
-	@Column(name="firstname") 
+	@Column(name="Firstname") 
 	private String firstName;
 	
-	@Column(name="lastname") 
+	@Column(name="Lastname") 
 	private String lastName;
 	
-	@Column(name="badge_number") 
+	@Column(name="Badge_Number") 
 	private int badgeNumber;
 
-	@Column(name="country") 
+	@Column(name="Country_Code") 
 	private String country;
 
-	@Column(name="job_title") 
+	@Column(name="Job_Title_Code") 
 	private String jobTitle;
 	
-	@Column(name="department") 
-	private String department;
+	@Column(name="Start_Date") 
+	private Date startDate;
 	
-	@Column(name="start_date") 
-	private String startDate;
-	
-	@Column(name="leave_date") 
-	private String leaveDate;
+	@Column(name="Leave_Date") 
+	private Date leaveDate;
 
 	public int getId() {
 		return id;
@@ -87,28 +86,19 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getLeaveDate() {
+	public Date getLeaveDate() {
 		return leaveDate;
 	}
 
-	public void setLeaveDate(String leaveDate) {
+	public void setLeaveDate(Date leaveDate) {
 		this.leaveDate = leaveDate;
 	}
-	
 }

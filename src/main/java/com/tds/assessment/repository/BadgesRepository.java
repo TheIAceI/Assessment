@@ -17,6 +17,10 @@ public interface BadgesRepository extends JpaRepository<Badges, Integer>{
 	@Query(value = "select * from badge where badge_status = 'Active' ", nativeQuery = true)
 	List<Badges> getAllActive();
 	
+	/*** List ***/
+	@Query(value = "select * from badge where badge_number = ?1 ", nativeQuery = true)
+	List<Badges> getBadge(String badge_number);
+	
 }
 
 

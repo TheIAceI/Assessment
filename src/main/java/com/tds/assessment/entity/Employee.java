@@ -8,35 +8,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Employees")
+@Table(name = "Employees")
 public class Employee {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID")
+	@Column(name = "ID")
 	private int id;
 
-	@Column(name="Firstname") 
+	@Column(name = "Firstname")
 	private String firstName;
-	
-	@Column(name="Lastname") 
-	private String lastName;
-	
-	@Column(name="Badge_Number") 
-	private int badgeNumber;
 
-	@Column(name="Country_Code") 
+	@Column(name = "Lastname")
+	private String lastName;
+
+	@Column(name = "Badge_Number")
+	private int badge_number;
+
+	@Column(name = "Country_Code")
 	private String country;
 
-	@Column(name="Job_Title_Code") 
-	private String jobTitle;
-	
-	@Column(name="Start_Date") 
-	private Date startDate;
-	
-	@Column(name="Leave_Date") 
-	private Date leaveDate;
+	@Column(name = "Job_Title_Code")
+	private String job_title_code;
+
+	@Column(name = "Start_Date")
+	private Date start_date;
+
+	@Column(name = "Leave_Date")
+	private Date leave_date;
 
 	public int getId() {
 		return id;
@@ -62,12 +62,12 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public int getBadgeNumber() {
-		return badgeNumber;
+	public int getBadge_number() {
+		return badge_number;
 	}
 
-	public void setBadgeNumber(int badgeNumber) {
-		this.badgeNumber = badgeNumber;
+	public void setBadge_number(int badge_number) {
+		this.badge_number = badge_number;
 	}
 
 	public String getCountry() {
@@ -78,27 +78,28 @@ public class Employee {
 		this.country = country;
 	}
 
-	public String getJobTitle() {
-		return jobTitle;
+	public String getJob_title_code() {
+		return job_title_code;
 	}
 
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
+	public void setJob_title_code(String job_title_code) {
+		this.job_title_code = job_title_code;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getStart_date() {
+		return start_date;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
 	}
 
-	public Date getLeaveDate() {
-		return leaveDate;
+	public Date getLeave_date() {
+		return leave_date;
 	}
 
-	public void setLeaveDate(Date leaveDate) {
-		this.leaveDate = leaveDate;
+	public void setLeave_date(Date leave_date) {
+		this.leave_date = leave_date;
 	}
+
 }

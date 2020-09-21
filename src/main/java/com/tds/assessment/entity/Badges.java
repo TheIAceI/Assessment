@@ -6,43 +6,43 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Badges")
+@Table(name = "Badges")
 public class Badges {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="badge_number")
-	private int badgeNumber;
+	@Column(name = "badge_number")
+	private int badge_number;
 
-	@Column(name="badge_status") 
-	private String badgeStatus;
+	@Column(name = "badge_status")
+	private String badge_status;
 
-	@Column(name="badge_expiry_date")
-	private String badgeExpiryDate;
+	@Column(name = "badge_expiry_date")
+	private String badge_expiry_date;
 
-	public int getBadgeNumber() {
-		return badgeNumber;
+	public int getBadge_number() {
+		return badge_number;
 	}
 
-	public void setBadgeNumber(int badgeNumber) {
-		this.badgeNumber = badgeNumber;
+	public void setBadge_number(int badge_number) {
+		this.badge_number = badge_number;
 	}
 
-	public String getBadgeStatus() {
-		return badgeStatus;
+	public String getBadge_status() {
+		return badge_status;
 	}
 
-	public void setBadgeStatus(String badgeStatus) {
-		this.badgeStatus = badgeStatus;
+	public void setBadge_status(String badge_status) {
+		this.badge_status = badge_status;
 	}
 
-	public String getBadgeExpiryDate() {
-		return badgeExpiryDate;
+	public String getBadge_expiry_date() {
+		return badge_expiry_date;
 	}
 
-	public void setBadgeExpiryDate(String badgeExpiryDate) {
-		this.badgeExpiryDate = badgeExpiryDate;
-	}	
-	
+	public void setBadge_expiry_date(String badge_expiry_date) {
+		this.badge_expiry_date = badge_expiry_date;
+	}
+
 }

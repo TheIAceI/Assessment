@@ -24,7 +24,7 @@ public class EmployeeController {
 	@RequestMapping(value = Routes.BA_GET_EMPLOYEE, method = RequestMethod.GET)  
 	public ResponseEntity getEmployeeAvailable() {		
 		List<Employee> allEmployee = (employeeService.getAllEmployee());
-		if(allEmployee == null) {
+		if (allEmployee.size() == 0) {
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}		
 		return new ResponseEntity(allEmployee, HttpStatus.OK);
@@ -33,7 +33,7 @@ public class EmployeeController {
 	@RequestMapping(value = Routes.BA_GET_EMPLOYEE_ACTIVE, method = RequestMethod.GET)  
 	public ResponseEntity getEmployeeActive() throws ParseException {		
 		List<Employee> activeEmployee = (employeeService.getActiveEmployee());
-		if(activeEmployee == null) {
+		if (activeEmployee.size() == 0) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 		}		
 		return new ResponseEntity(activeEmployee, HttpStatus.OK);

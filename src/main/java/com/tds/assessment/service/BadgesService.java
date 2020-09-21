@@ -22,4 +22,8 @@ public class BadgesService {
 		return badgesRepo.getAllBadges();
 	}
 	
+	public List<Badges> getBadge(String badge_number) {
+		return badgesRepo.getBadge(badge_number);
+	}
+	
 }

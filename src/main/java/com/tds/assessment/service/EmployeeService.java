@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.tds.assessment.entity.Employee;
 import com.tds.assessment.repository.EmployeeRepository;
 import com.tds.assessment.util.CountrySingleton;
+//import com.tds.assessment.util.CountrySingleton;
 
 @Service
 public class EmployeeService {
@@ -18,7 +19,7 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
-	//CountrySingleton countruSingleton = CountrySingleton.getInstance();
+	CountrySingleton countruSingleton = CountrySingleton.getInstance();
 	
 	@Autowired
 	CountryService countryService;
@@ -26,8 +27,8 @@ public class EmployeeService {
 	public List<Employee> getAllEmployee() throws Exception {
 		List<Employee> employeeList = employeeRepository.getAllEmployee();
 		for (Employee emp : employeeList) {
-			//emp.setCountry(countruSingleton.getCoutryName(emp.getCountry()));
-			emp.setCountry(countryService.getCountryName(emp.getCountry()));
+			emp.setCountry(countruSingleton.getCoutryName(emp.getCountry().toUpperCase()));
+			//emp.setCountry(countryService.getCountryName(emp.getCountry()));
 		}
 		return employeeList;
 	}

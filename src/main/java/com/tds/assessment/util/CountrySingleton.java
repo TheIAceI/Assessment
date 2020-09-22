@@ -1,9 +1,12 @@
 package com.tds.assessment.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,7 +17,8 @@ public class CountrySingleton {
 
 	public Boolean started = false;
 
-	JSONObject jsonCountry = new JSONObject();
+	JSONObject jsonCountryAlpha3 = new JSONObject();
+	JSONObject jsonCountryAlpha2 = new JSONObject();
 
 	private static CountrySingleton single_instance = null;
 
@@ -29,55 +33,66 @@ public class CountrySingleton {
 
 		return single_instance;
 	}
-
-	public void setCountryList() throws Exception {
-		String countryList = sendGet();
-		System.out.println("LLL: "+countryList);
-
+	
+	public void setCountryListAlpha2() throws Exception {
+		String countryList = sendGetRequest();
 		if (!countryList.equals("")) {
 			JSONArray ja = new JSONArray(countryList.trim());
-			for (int i = 0; i < ja.length(); i++) {				
-				System.out.println(ja.get(i));
+			for (int i = 0; i < ja.length(); i++) {
 				JSONObject objectInArray = ja.getJSONObject(i);
-				jsonCountry.put(objectInArray.get("alpha3Code").toString(), objectInArray.get("name").toString());
+				jsonCountryAlpha2.put(objectInArray.get("alpha2Code").toString(), objectInArray.get("name").toString());
 			}
 		}
-
-		//System.out.println(jsonCountry);
-		jsonCountry = new JSONObject(countryList);
+		System.out.println("2 "+jsonCountryAlpha2.toString());
 	}
 
+	public void setCountryListAlpha3() throws Exception {
+		String countryList = sendGetRequest();
+		if (!countryList.equals("")) {
+			JSONArray ja = new JSONArray(countryList.trim());
+			for (int i = 0; i < ja.length(); i++) {
+				JSONObject objectInArray = ja.getJSONObject(i);
+				jsonCountryAlpha3.put(objectInArray.get("alpha3Code").toString(), objectInArray.get("name").toString());
+			}
+		}
+		System.out.println("3 "+jsonCountryAlpha3.toString());
+
+	}
+	
 	public String getCoutryName(String code) {
-		String countryName = jsonCountry.getString(code);
+		String countryName = code;
+		
+		if(code.length() == 3) {
+			countryName = jsonCountryAlpha3.getString(code);
+		} else if(code.length() == 2) {
+			countryName = jsonCountryAlpha2.getString(code);
+		}		
+		
 		if (countryName == null) {
 			return code;
 		}
 		return countryName;
 	}
 
-	private static String sendGet() throws Exception {
-		URL obj = new URL(COUNTRYAPI);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+	private String sendGetRequest() throws IOException {
+		String inline = "";
 
-		// optional default is GET
-		con.setRequestMethod("GET");
+		URL url = new URL(COUNTRYAPI);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.connect();
+		int responsecode = conn.getResponseCode();
+		if (responsecode != 200) {
+			throw new RuntimeException("HttpResponseCode: " + responsecode);
+		} else {
 
-		// add request header
-		int responseCode = con.getResponseCode();
-
-		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
+			Scanner sc = new Scanner(url.openStream());
+			while (sc.hasNext()) {
+				inline += sc.nextLine();
+			}
+			sc.close();
 		}
-		in.close();
-
-		// print result
-		// System.out.println(response.toString());
-		return response.toString();
-
+		return inline.toString();
 	}
 
 	public Boolean getStarted() {

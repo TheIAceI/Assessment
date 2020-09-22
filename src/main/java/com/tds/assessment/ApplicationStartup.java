@@ -14,15 +14,16 @@ public class ApplicationStartup {
 	 * application is ready to service requests.
 	 */
 
-	/*
+	
 	CountrySingleton countruSingleton = CountrySingleton.getInstance(); 
 	
 	@PostConstruct
     private void postConstruct() throws Exception {
 		if(!countruSingleton.getStarted()) {
-			countruSingleton.setCountryList();		
+			countruSingleton.setCountryListAlpha2();
+			countruSingleton.setCountryListAlpha3();		
 		}		
 		countruSingleton.setStarted(true);
-	}*/
+	}
 
 }

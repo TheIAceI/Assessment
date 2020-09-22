@@ -6,7 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Badges")
 public class Badges {
 
 	private static final long serialVersionUID = 1L;

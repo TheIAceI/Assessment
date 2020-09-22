@@ -3,10 +3,8 @@ package com.tds.assessment.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "Department")
 public class Department {
 
 	private static final long serialVersionUID = 1L;

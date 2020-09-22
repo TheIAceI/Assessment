@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tds.assessment.entity.Employee;
+import com.tds.assessment.entity.EmployeeDepartment;
+import com.tds.assessment.repository.EmployeeDepartmentRepository;
 import com.tds.assessment.repository.EmployeeRepository;
 import com.tds.assessment.util.CountrySingleton;
-//import com.tds.assessment.util.CountrySingleton;
 
 @Service
 public class EmployeeService {
@@ -19,24 +20,38 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
-	CountrySingleton countruSingleton = CountrySingleton.getInstance();
-	
 	@Autowired
-	CountryService countryService;
+	EmployeeDepartmentRepository employeeDepartmentRepository;
 	
-	public List<Employee> getAllEmployee() throws Exception {
-		List<Employee> employeeList = employeeRepository.getAllEmployee();
-		for (Employee emp : employeeList) {
+	CountrySingleton countruSingleton = CountrySingleton.getInstance();
+
+	public List<EmployeeDepartment> getAllEmployee() throws Exception {
+		List<EmployeeDepartment> employeeList = employeeDepartmentRepository.getEmployeeDepartment();
+		for (EmployeeDepartment emp : employeeList) {
 			emp.setCountry(countruSingleton.getCoutryName(emp.getCountry().toUpperCase()));
-			//emp.setCountry(countryService.getCountryName(emp.getCountry()));
 		}
 		return employeeList;
 	}
 
-	public List<Employee> getActiveEmployee() throws ParseException {
+	public List<EmployeeDepartment> getActiveEmployee() throws ParseException {
 		String sDate1 = "2019-08-12";
 		Date d = new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
-		return employeeRepository.getActiveEmployee(d);
+		return employeeDepartmentRepository.getActiveEmployee(d);
 	}
+	
+	
+	public List<EmployeeDepartment> getAllEmployeeByDepartment(String department_name) throws Exception {
+		List<EmployeeDepartment> employeeList = employeeDepartmentRepository.getEmployeeByDepartment(department_name);
+		for (EmployeeDepartment emp : employeeList) {
+			emp.setCountry(countruSingleton.getCoutryName(emp.getCountry().toUpperCase()));
+		}
+		return employeeList;
+	}
+	
+	
 
+	
+	
+	
+	
 }

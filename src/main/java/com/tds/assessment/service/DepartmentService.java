@@ -18,4 +18,8 @@ public class DepartmentService {
 		return departmentRepository.getAllDepartment();
 	}
 	
+	public Department getDepartmentByName(String department_name){
+		return departmentRepository.getDepartmentByName(department_name);
+	}
+	
 }

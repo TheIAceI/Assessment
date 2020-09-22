@@ -13,5 +13,8 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 	@Query(value = "select * from Department ", nativeQuery = true)
 	List<Department> getAllDepartment();
 	
+	@Query(value = "select * from Department where department_name = ?1 ", nativeQuery = true)
+	Department getDepartmentByName(String department_name);
+	
 }
 

@@ -14,7 +14,7 @@ public class JobTitleService {
 
 	@Autowired
 	JobTitleDepartmentRepository jobTitleDepartmentRepository;
-
+	
 	//@Autowired
 	//EntityManager em;
 

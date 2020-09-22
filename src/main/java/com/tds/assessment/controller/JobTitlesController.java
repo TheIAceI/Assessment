@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tds.assessment.entity.JobTitleDepartment;
+import com.tds.assessment.service.DepartmentService;
 import com.tds.assessment.service.JobTitleService;
 import com.tds.assessment.util.Routes;
 
@@ -20,6 +21,9 @@ public class JobTitlesController {
 
 	@Autowired
 	JobTitleService jobTitleService;
+	
+	@Autowired
+	DepartmentService departmentService;
 	
 	@RequestMapping(value = Routes.BA_GET_JOB_TITLES, method = RequestMethod.GET)  
 	public ResponseEntity getAllJobTitles() {		
@@ -32,6 +36,11 @@ public class JobTitlesController {
 	
 	@RequestMapping(value = Routes.BA_GET_JOB_TITLES, method = RequestMethod.GET, params = "department_name")
 	public ResponseEntity getJobTitle(@RequestParam(name = "department_name") String department_name) {
+		
+		if(departmentService.getDepartmentByName(department_name) ==  null) {
+			return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+		
 		List<JobTitleDepartment> jobDepartment = jobTitleService.getJobTitle(department_name);
 		if (jobDepartment.size() == 0) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

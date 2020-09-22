@@ -14,26 +14,21 @@ public class JobTitleService {
 
 	@Autowired
 	JobTitleRepository jobTitleRepository;
-	
+
 	@Autowired
 	EntityManager em;
-	
-	
-	public List<JobTitle> getAllJobTitles(){
+
+	public List<JobTitle> getAllJobTitles() {
 		return jobTitleRepository.getAllJobTitles();
 	}
-		
-	public List<Object[]> getJobTitle(String department){
-		
+
+	//Uses EntityManager for Join Tables. We could also use a repository that returns an Object
+	public List<Object[]> getJobTitle(String department) {
 		String select = "select Job_Title.Job_Title_Code, Job_Title.Job_Title_Name, Department.Department_Name "
-				+ "from Job_Title "
-				+ "inner join Department on Job_Title.Department_Code = Department.Department_Code "
-				+ "where Department.Department_name = '"+department+"'";
-		
+				+ "from Job_Title " + "inner join Department on Job_Title.Department_Code = Department.Department_Code "
+				+ "where Department.Department_name = '" + department + "'";
 		List<Object[]> jobTitles = em.createNativeQuery(select).getResultList();
-		
 		return jobTitles;
 	}
-	
-	
+
 }

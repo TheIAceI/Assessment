@@ -1,6 +1,8 @@
 package com.tds.assessment.util;
 
 public class Routes {
+	
+	//All the routes for the project should be stored here
 
 	public static final String BA_GET_BADGES = "/badges";
 	public static final String BA_GET_BADGES_ACTIVE = "/badges/active";

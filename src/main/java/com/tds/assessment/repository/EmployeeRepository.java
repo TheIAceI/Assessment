@@ -17,11 +17,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	SELECT * FROM AAATable1 WHERE DATA is not null;
 	*/
 	
-	/*** List ***/
 	@Query(value = "select * from Employee ", nativeQuery = true)
 	List<Employee> getAllEmployee();
 
-	/*** List ***/
 	@Query(value = "select * from Employee where (Leave_Date is null) or (Leave_Date < ?1) ", nativeQuery = true)
 	List<Employee> getActiveEmployee(Date date);
 	

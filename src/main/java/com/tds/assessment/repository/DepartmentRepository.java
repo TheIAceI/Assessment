@@ -10,9 +10,8 @@ import com.tds.assessment.entity.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, Integer>{
 	
-	/*** List ***/
 	@Query(value = "select * from Department ", nativeQuery = true)
 	List<Department> getAllDepartment();
-
+	
 }
 

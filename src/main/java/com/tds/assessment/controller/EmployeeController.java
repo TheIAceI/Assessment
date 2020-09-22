@@ -14,6 +14,7 @@ import com.tds.assessment.entity.EmployeeDepartment;
 import com.tds.assessment.service.EmployeeService;
 import com.tds.assessment.util.Routes;
 
+@SuppressWarnings({"rawtypes", "unchecked" })
 @RestController
 public class EmployeeController {
 			

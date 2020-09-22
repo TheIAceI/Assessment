@@ -15,6 +15,7 @@ import com.tds.assessment.service.BadgesService;
 import com.tds.assessment.util.Routes;
 import com.tds.assessment.util.Util;
 
+@SuppressWarnings({"rawtypes", "static-access", "unchecked" })
 @RestController
 public class BadgesController {
 

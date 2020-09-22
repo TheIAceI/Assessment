@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
+	//For assessment the username is tds and password is password
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		if ("tds".equals(username)) {

@@ -13,12 +13,11 @@ public class ApplicationStartup {
 	 * This event is executed as late as conceivably possible to indicate that the
 	 * application is ready to service requests.
 	 */
-
 	
 	CountrySingleton countruSingleton = CountrySingleton.getInstance(); 
 	
 	@PostConstruct
-    private void postConstruct() throws Exception {
+    private void postConstruct() throws Exception {		
 		if(!countruSingleton.getStarted()) {
 			countruSingleton.setCountryListAlpha2();
 			countruSingleton.setCountryListAlpha3();		

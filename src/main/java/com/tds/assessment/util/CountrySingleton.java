@@ -1,17 +1,19 @@
 package com.tds.assessment.util;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class CountrySingleton {
+
+	/**
+	 * Description: This Sinlgeton class calls an external API that returns all
+	 * country codes and names. Stores the data in a JSONObject.
+	 **/
 
 	private static final String COUNTRYAPI = "https://restcountries.eu/rest/v2/all";
 
@@ -22,18 +24,16 @@ public class CountrySingleton {
 
 	private static CountrySingleton single_instance = null;
 
-	// private constructor restricted to this class itself
 	private CountrySingleton() {
 	}
 
-	// static method to create instance of Singleton class
 	public static CountrySingleton getInstance() {
 		if (single_instance == null)
 			single_instance = new CountrySingleton();
 
 		return single_instance;
 	}
-	
+
 	public void setCountryListAlpha2() throws Exception {
 		String countryList = sendGetRequest();
 		if (!countryList.equals("")) {
@@ -43,7 +43,6 @@ public class CountrySingleton {
 				jsonCountryAlpha2.put(objectInArray.get("alpha2Code").toString(), objectInArray.get("name").toString());
 			}
 		}
-		System.out.println("2 "+jsonCountryAlpha2.toString());
 	}
 
 	public void setCountryListAlpha3() throws Exception {
@@ -55,28 +54,25 @@ public class CountrySingleton {
 				jsonCountryAlpha3.put(objectInArray.get("alpha3Code").toString(), objectInArray.get("name").toString());
 			}
 		}
-		System.out.println("3 "+jsonCountryAlpha3.toString());
-
 	}
 	
+	//Return the country name by the code Alpha2 or Alpha3. Ex IE or IRL for Ireland
 	public String getCoutryName(String code) {
 		String countryName = code;
-		
-		if(code.length() == 3) {
+		if (code.length() == 3) {
 			countryName = jsonCountryAlpha3.getString(code);
-		} else if(code.length() == 2) {
+		} else if (code.length() == 2) {
 			countryName = jsonCountryAlpha2.getString(code);
-		}		
-		
+		}
 		if (countryName == null) {
 			return code;
 		}
 		return countryName;
 	}
 
+	//Sends a Get Request to the Rest Countries API. Returns all the countries.
 	private String sendGetRequest() throws IOException {
 		String inline = "";
-
 		URL url = new URL(COUNTRYAPI);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
@@ -85,7 +81,6 @@ public class CountrySingleton {
 		if (responsecode != 200) {
 			throw new RuntimeException("HttpResponseCode: " + responsecode);
 		} else {
-
 			Scanner sc = new Scanner(url.openStream());
 			while (sc.hasNext()) {
 				inline += sc.nextLine();

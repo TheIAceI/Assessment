@@ -16,16 +16,15 @@ Requirements
 
 ## How to run the application.
 
-Download or clone this repository.
+1. Download or clone this repository.
 
-Open the project with Eclipse.
+2. Open the project with Eclipse.
 
-Right click the project and select 
+3. Right click the project and select 
 
-Run As -> Java Application
+4. Run As -> Java Application
 
-Select the project main class: AssessmentApplication - com.tds.assessment.
-
+5. Select the project main class: AssessmentApplication - com.tds.assessment.
 
 
 To test the requests use the application Postman.
@@ -37,24 +36,29 @@ You can download from.
 
 ## Authentication.
 
-Used the Jwt (JsonWebToken).
+To use this application you must first authenticate and generate a JWT (Json Web Token).
 
-How to Authenticate:
+### How to Authenticate:
 
-Open Postman and create a new post request with the following information.
+    Open Postman and create a new post request with the following information.
 
-http://localhost:8080/authenticate
+    http://localhost:8080/authenticate
 
-   Body: Type Json
+    Body: Type Json
    
-   {"username":"tds", "password":"password"}
+    {"username":"tds", "password":"password"}
 
-   This post request will return an JWT that is used to access the API controllers.
+    This post request will return an JWT that is used to access the API controllers.
 
-   return:
-   {
+    return:
+    {
        "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZHMiLCJleHAiOjE2MDA3ODg2MjAsImlhdCI6MTYwMDc3MDYyMH0.nTZ_qj468jDlUbaz1LALLMgm05EJ5_vH2n-9ynhRYNrypC6s6YeelzfJH_oLdIPQZyx-J-m5_P0Lj8NyZzXANA"
-   }
+    }
+
+![auth_with_postman](https://i.ibb.co/VVM9Jr6/postman-authenticate.png)
+
+
+
 
 ## Send a Request
 

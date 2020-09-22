@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class JobTitle {
+public class JobTitleDepartment {
 
 	private static final long serialVersionUID = 1L;
 
@@ -16,8 +16,8 @@ public class JobTitle {
 	@Column(name = "Job_Title_Name")
 	private String job_title_name;
 
-	@Column(name = "Department_Code")
-	private int department_code;
+	@Column(name = "Department_Name")
+	private String department_name;
 
 	public int getJob_title_code() {
 		return job_title_code;
@@ -35,12 +35,12 @@ public class JobTitle {
 		this.job_title_name = job_title_name;
 	}
 
-	public int getDepartment_code() {
-		return department_code;
+	public String getDepartment_name() {
+		return department_name;
 	}
 
-	public void setDepartment_code(int department_code) {
-		this.department_code = department_code;
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
 	}
 
 }

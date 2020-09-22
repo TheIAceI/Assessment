@@ -1,5 +1,7 @@
 package com.tds.assessment.service;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,9 @@ public class BadgesService {
 		return badgesRepo.getAllBadges();
 	}
 	
-	public List<Badges> getActiveBadges() {
-		return badgesRepo.getAllBadges();
+	public List<Badges> getActiveBadges() throws ParseException {				
+		Date d = new Date();
+		return badgesRepo.getAllActive(d);
 	}
 	
 	public List<Badges> getBadge(String badge_number) {

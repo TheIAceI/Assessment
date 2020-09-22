@@ -18,7 +18,7 @@ public interface EmployeeDepartmentRepository extends JpaRepository<EmployeeDepa
 	@Query(value = " select e.ID, e.Firstname, e.Lastname, e.Badge_Number, e.Country_Code, j.Job_Title_Name, d.Department_Name, e.Start_Date, e.Leave_date from "+ 
 			" employee e "+
 			" inner join Job_Title j on e.Job_Title_Code = j.Job_Title_Code "+
-			" inner join Department d on j.Department_Code = d.Department_Code where (e.Leave_Date is null) or (e.Leave_Date < ?1) ", nativeQuery = true)
+			" inner join Department d on j.Department_Code = d.Department_Code where (e.Leave_Date is null) or (e.Leave_Date > ?1) ", nativeQuery = true)
 	List<EmployeeDepartment> getActiveEmployee(Date date);
 
 	

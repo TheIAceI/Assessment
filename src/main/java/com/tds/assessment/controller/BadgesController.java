@@ -1,5 +1,6 @@
 package com.tds.assessment.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class BadgesController {
 	}
 
 	@RequestMapping(value = Routes.BA_GET_BADGES_ACTIVE, method = RequestMethod.GET)
-	public ResponseEntity getBadgesActive() {
+	public ResponseEntity getBadgesActive() throws ParseException {
 		List<Badges> activeBadges = (badgeService.getActiveBadges());
 		if (activeBadges.size() == 0) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);

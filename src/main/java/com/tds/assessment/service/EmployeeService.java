@@ -10,14 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.tds.assessment.entity.EmployeeDepartment;
 import com.tds.assessment.repository.EmployeeDepartmentRepository;
-import com.tds.assessment.repository.EmployeeRepository;
 import com.tds.assessment.util.CountrySingleton;
 
 @Service
 public class EmployeeService {
-
-	@Autowired
-	EmployeeRepository employeeRepository;
 	
 	@Autowired
 	EmployeeDepartmentRepository employeeDepartmentRepository;
@@ -33,8 +29,7 @@ public class EmployeeService {
 	}
 	
 	public List<EmployeeDepartment> getActiveEmployee() throws ParseException {
-		String sDate1 = "2019-08-12";
-		Date d = new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
+		Date d = new Date();
 		return employeeDepartmentRepository.getActiveEmployee(d);
 	}
 		

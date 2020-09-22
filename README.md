@@ -1,8 +1,40 @@
 # Assessment
  
- 
- 
- 
+Integrations Developer Remote Assessment
+
+The goal of this assessment project is to develop a simple RESTful API to retrieve and display data
+residing in an Oracle database.
+
+Requirements
+- Develop a RESTful API with endpoints matching the below format
+- Build API using one of Java, NodeJS or Python
+- API to use basic authentication
+- API to return JSON Arrays in all successful responses
+- Submission to include a github link or a zip file containing all relevant parts
+- Include simple document outlining steps to run application locally
+- Include simple document, if applicable, outlining any issues with completing the assessment
+
+## How to run the application.
+
+Download or clone this repository.
+
+Open the project with Eclipse.
+
+Right click the project and select 
+
+Run As -> Java Application
+
+Select the project main class: AssessmentApplication - com.tds.assessment.
+
+
+
+To test the requests use the application Postman.
+
+You can download from. 
+
+[Postman](https://www.postman.com/)
+
+
 ## Authentication.
 
 Used the Jwt (JsonWebToken).

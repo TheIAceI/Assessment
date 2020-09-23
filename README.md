@@ -87,27 +87,62 @@ To use this application you must first authenticate and generate a JWT (Json Web
 
     For all the endpoints available the user must set the Authentication token like the example on "Send Request"
     
-    Badges
-    Get all badges
+## Badges
+   
+    Get All badges
     http://localhost:8080/badges    
+    Return a list of all badges available, status 200 OK.
+    Return status 400 Bad Request if no badges are found.   
+    
+    Get Active Badges
+    Ex: http://localhost:8080/badges/active
+    Return a list of all badges active, status 200 OK.
+    Return status 404 Not Found if no badges are active.   
+        
+    Get Single Badge
     Param: badge_number
+    Ex: http://localhost:8080/badges?badge_number=111
+    Return a badge, status 200 OK.
+    Return 422 Unprocessable Entity if is not a numeric parameter.
+    Return status 404 Not Found if no badges are found.   
     
-    Get active badges
-    http://localhost:8080/badges/active
-    
-    
-    Employees
-    http://localhost:8080/employees
-    Param: department_name
-    
-    Get active employees
-    http://localhost:8080/employees/active
 
-    Department:
+## Employee
+
+    Get All Employees
+    http://localhost:8080/employees
+    Return a list of all employees available, status 200 OK.
+    Return status 400 Bad Request if no available are found.      
+    
+    Get Active Employees
+    http://localhost:8080/employees/active
+    Return a list of all employees active, status 200 OK.
+    Return status 404 Not Found if no employees are active.
+    
+    Get Employee by Department Name
+    Param: department_name
+    Ex: http://localhost:8080/employees?department_name=Software
+    Return a list of employee, status 200 OK.
+    Return status 400 Bad Request no employees are found.    
+    
+## Department
+
     Get all the departments
     http://localhost:8080/department
-
-    Job Titles   
+    Return a list of all departments, status 200 OK.
+    Return status 400 Bad Request if no departments are found.      
+    
+ ## Job Titles   
+ 
+    Get All Job Titles   
     http://localhost:8080/job_titles
-    param: department_name
+    Return a list of all job titles, status 200 OK.
+    Return status 404 Not Found if no job titles are found.
+    
+    Get All Job Titles by Department 
+    http://localhost:8080/job_titles?department_name=Software 
+    Param: department_name
+    Return a list of all job titles, status 200 OK.
+    Return status 404 Not Found if no job titles are found.
+    Return status 422 Unprocessable Entit if the department is invalid.
 

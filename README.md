@@ -36,7 +36,8 @@ You can download from.
 
 ## Authentication.
 
-To use this application you must first authenticate and generate a JWT (Json Web Token).
+    To use this application you must first authenticate and generate a JWT (Json Web Token).
+
 
 ### How to Authenticate:
 
@@ -60,7 +61,7 @@ To use this application you must first authenticate and generate a JWT (Json Web
 
 ### Send a Request
 
-    To send a GET request to the API you need to set the Headers first.
+    To send a GET request to the API you need to define the Headers first.
 
     Use the token genereated for the authenticated user.
 
@@ -76,7 +77,7 @@ To use this application you must first authenticate and generate a JWT (Json Web
 
     This should return a list of active employees like this:
 
-    [{"id":1,"firstName":"John","lastName":"Smith","badge_number":101,"country":"irl","job_title_name":"Software Engineer","department":"Software","start_date":"2020-06-07","leave_date":null},{"id":2,"firstName":"James","lastName":"Dunne","badge_number":102,"country":"irl","job_title_name":"Software Support","department":"Software","start_date":"2020-06-07","leave_date":null}]
+    [{"id":1,"firstName":"John","lastName":"Smith","badge_number":101,"country":"irl","job_title_name":"Software Engineer","department":"Software","start_date":"2020-06-07","leave_date":null}]
 
 
 ![request_with_postman](https://i.ibb.co/jVqZmNW/postman-using-token.png)
@@ -85,7 +86,7 @@ To use this application you must first authenticate and generate a JWT (Json Web
 
 ## Available Endpoints
 
-    For all the endpoints available the user must set the Authentication token like the example on "Send Request"
+    For all available endpoints, the user must define the authentication token as the example in "Send request"    
     
 ### Badges
    

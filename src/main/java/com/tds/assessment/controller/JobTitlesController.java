@@ -37,6 +37,10 @@ public class JobTitlesController {
 	@RequestMapping(value = Routes.BA_GET_JOB_TITLES, method = RequestMethod.GET, params = "department_name")
 	public ResponseEntity getJobTitle(@RequestParam(name = "department_name") String department_name) {
 		
+		if(department_name.trim().equals("")) {
+			return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+		
 		if(departmentService.getDepartmentByName(department_name) ==  null) {
 			return new ResponseEntity(HttpStatus.UNPROCESSABLE_ENTITY);
 		}

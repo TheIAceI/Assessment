@@ -83,11 +83,11 @@ To use this application you must first authenticate and generate a JWT (Json Web
 
 
 
-### Available Endpoints
+## Available Endpoints
 
     For all the endpoints available the user must set the Authentication token like the example on "Send Request"
     
-## Badges
+### Badges
    
     Get All badges
     http://localhost:8080/badges    
@@ -107,7 +107,7 @@ To use this application you must first authenticate and generate a JWT (Json Web
     Return status 404 Not Found if no badges are found.   
     
 
-## Employee
+### Employee
 
     Get All Employees
     http://localhost:8080/employees
@@ -125,14 +125,14 @@ To use this application you must first authenticate and generate a JWT (Json Web
     Return a list of employee, status 200 OK.
     Return status 400 Bad Request no employees are found.    
     
-## Department
+### Department
 
     Get all the departments
     http://localhost:8080/department
     Return a list of all departments, status 200 OK.
     Return status 400 Bad Request if no departments are found.      
     
- ## Job Titles   
+ ### Job Titles   
  
     Get All Job Titles   
     http://localhost:8080/job_titles
